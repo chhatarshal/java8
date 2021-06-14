@@ -36,6 +36,7 @@ class _java8_functional_interface {
 	
 	@Test
 	void functionInterfaceDoubler() {
+		System.out.println("Look at me:: ");
 		Doubler dbl = parameter ->  parameter * 2;
 		UseFoo useFoo = new UseFoo();
 		Integer result = useFoo.doubleValues(dbl, 10);
@@ -72,5 +73,39 @@ class _java8_functional_interface {
 		System.out.println("This code is legal, as total variable remains “effectively final,” but will the object it references have the same state after execution of the lambda? No!");
 	//	Foo foo = parameter -> parameter + x;
 	}
+	
+	//Use Method References
+	@Test
+	void Use_Method_References() {
+		String name = "abcd";
+		 
+	}
+	
+	//Keep Lambda Expressions Short and Self-explanatory
+	
+	private String buildString(String parameter) {
+	    String result = "Something " + parameter;
+	    //many lines of code
+	    return result;
+	}
+	
+	
+	@Test
+	void example_of_using_lambda() {
+		Foo foo = parameter -> buildString(parameter); 
+		//assertEquals("Something ", foo);
+	}
+	
+	public interface MyComparator {
 
+	    public int compare(int a1, int a2);
+
+	}
+	
+	@Test
+	void example_of_using_lambda_example2() {
+		MyComparator myComparator = (a1, a2) -> a1 > a2 ? a1 : a2;
+		assertEquals(21, myComparator.compare(10, 21));
+	}
+	
 }
