@@ -3,11 +3,7 @@ package com.org.csingh.base;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 
@@ -141,43 +137,6 @@ class _java8_functional_interface {
 				  .reduce(0, (i1, i2) -> i1 + i2);
 		System.out.println(sum);
 		assertEquals(37, sum);
-	}
-	
-	// Predicates
-	@Test
-	void test_predicate() {
-		System.out.println(" a predicate is a function that receives a value and returns a boolean value");
-		List<String> names = Arrays.asList("Angela", "Aaron", "Bob", "Claire", "David");
-
-		List<String> namesWithA = names.stream()
-		  .filter(name -> name.startsWith("A"))
-		  .collect(Collectors.toList());
-		
-		System.out.println("Predicate is inside filter....");
-	}
-	
-	@Test
-	void test_Suppliers() {
-		System.out.println("The Supplier functional interface is yet another Function specialization that does not take any arguments. We typically use it for lazy generation of values. For instance, let's define a function that squares a double value. It will not receive a value itself, but a Supplier of this value:");
-		int[] fibs = {0, 1};
-		Stream<Integer> fibonacci = Stream.generate(() -> {
-		    int result = fibs[1];
-		    int fib3 = fibs[0] + fibs[1];
-		    fibs[0] = fibs[1];
-		    fibs[1] = fib3;
-		    return result;
-		});
-	}
-	
-	@Test
-	void test_Consumers() {
-		System.out.println("As opposed to the Supplier, the Consumer accepts a generified argument and returns nothing. It is a function that is representing side effects.");
-		Map<String, Integer> ages = new HashMap<>();
-		ages.put("John", 25);
-		ages.put("Freddy", 24);
-		ages.put("Samuel", 30);
-
-		ages.forEach((name, age) -> System.out.println(name + " is " + age + " years old"));
 	}
 	
 }
