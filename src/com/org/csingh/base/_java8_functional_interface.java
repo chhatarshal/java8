@@ -1,6 +1,9 @@
 package com.org.csingh.base;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -106,6 +109,34 @@ class _java8_functional_interface {
 	void example_of_using_lambda_example2() {
 		MyComparator myComparator = (a1, a2) -> a1 > a2 ? a1 : a2;
 		assertEquals(21, myComparator.compare(10, 21));
+	}
+	
+	
+	//Operators
+	@Test
+	void operators_testing_unary() {
+		List<String> names = Arrays.asList("bob", "josh", "megan");
+		 
+		names.replaceAll(name -> name.toUpperCase());
+		names.forEach(val -> System.out.println(val));
+	}
+	
+	@Test
+	void operators_testing_binary() {
+		List<Integer> values = Arrays.asList(3, 5, 8, 9, 12);
+		int sum = values.stream()
+				  .reduce(0, (i1, i2) -> i1 + i2);
+		System.out.println(sum);
+		assertEquals(37, sum);
+		sum = values.stream()
+				  .reduce(1, (i1, i2) -> i1 + i2);
+		System.out.println(sum);
+		assertEquals(38, sum);
+		System.out.println("Using parallel operation....");
+		sum = values.stream().parallel()
+				  .reduce(0, (i1, i2) -> i1 + i2);
+		System.out.println(sum);
+		assertEquals(37, sum);
 	}
 	
 }
