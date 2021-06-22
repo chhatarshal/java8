@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -36,6 +37,13 @@ class _java_8_way_of_doing_things {
 		System.out.println("Filtered List: " + filtered);
 		String mergedString = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.joining(", "));
 		System.out.println("Merged String: " + mergedString);
+	}
+	
+	@Test
+	void generate_20_random_numbers_java_8() {
+		System.out.println("Printing 20 random numbers");
+		Random random = new Random();
+		random.ints().limit(20).forEach(System.out::println);
 	}
 
 }
