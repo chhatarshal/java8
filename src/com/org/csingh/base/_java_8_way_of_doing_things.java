@@ -2,6 +2,7 @@ package com.org.csingh.base;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
 import java.util.List;
@@ -42,8 +43,40 @@ class _java_8_way_of_doing_things {
 	@Test
 	void generate_20_random_numbers_java_8() {
 		System.out.println("Printing 20 random numbers");
+		
 		Random random = new Random();
 		random.ints().limit(20).forEach(System.out::println);
 	}
+	
+	@Test
+	void practice_arrays() {
+		System.out.println("Practice Arrays.......");
+		String array[] = new String[] {"a", "b", "c", "d"};
+		Stream.of(array).forEach(System.out::println);
+	}
+	
+	@Test
+	void functioal_interface_method_reference() {
+		System.out.println("Practice functioal interface method reference  .......");
+		 Helper helper = new Helper();
+		 FunInterface funInterface = () -> System.out.println("hey you"); 
+		 helper.doingFun(funInterface);
+		 
+	}
 
+	@FunctionalInterface
+	interface FunInterface {
+		public void fun();
+	}
+	
+	class Helper {
+		
+		List<FunctionalInterface>  allBehaviour = new ArrayList<>();
+		public void doingFun(FunInterface fundone) {
+			System.out.println("funn ");
+			fundone.fun();
+		}
+	}
+	
+	
 }
