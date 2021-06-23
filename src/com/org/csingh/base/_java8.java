@@ -6,7 +6,9 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -23,9 +25,26 @@ class _java8 {
 	@Test
 	void createEmptyOptinal2() {
 		String name = "java";
-		Optional<String> opt = Optional.of(name);
+		Optional<String> opt = Optional.of(name);		 
 		assertTrue(opt.isPresent());
 	}
+	
+	@Test
+	void createEmptyOptinal3_with_list() {
+		System.out.println("Here is best example of using ofnullable with map");
+		Map<Integer, Boolean> values = new HashMap<>();
+		values.put(Integer.valueOf(100), true);
+		boolean val = Optional.ofNullable(values.get(Integer.valueOf(100))).orElse(false);		 
+		assertTrue(val);
+		boolean val2 = Optional.ofNullable(values.get(Integer.valueOf(101))).orElse(false);		 
+		assertFalse(val2);
+		System.out.println("Look here if we try to use Optiona.of in empty map and we try to get some object from empty map"
+				+ ". In this case Optional.of will not be useable you need to use ofNullable to handle this case");
+		Map<Integer, Boolean> anotherMap = new HashMap<>();
+		boolean val3 = Optional.ofNullable(anotherMap.get(Integer.valueOf(100))).orElse(true);	
+		//boolean val3 = Optional.of(anotherMap.get(Integer.valueOf(100))).orElse(true);	
+		assertTrue(val3);
+	} 
 	
 	@Test
 	void createEmptyOptinal3() {
