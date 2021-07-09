@@ -9,6 +9,8 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 
 class java_8_time {
+	
+ 
 
 	@Test
 	void test() {
@@ -54,6 +56,24 @@ class java_8_time {
 
 		System.out.println(sdf3.format(timestamp)); // 2021-03-24 16:48:05
 
+	}
+	
+	@Test
+	void test3() {
+		System.out.println("Java 8 instant example");
+		 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	      System.out.println(timestamp);                  // 2021-03-24 17:12:03.311
+	      System.out.println(timestamp.getTime());        // 1616577123311
+
+	      // Convert Timestamp to Instant
+	      Instant instant = timestamp.toInstant();
+	      System.out.println(instant);                    // 2021-03-24T09:12:03.311Z
+	      System.out.println(instant.toEpochMilli());     // 1616577123311
+
+	      // Convert Instant to Timestamp
+	      Timestamp tsFromInstant = Timestamp.from(instant);
+	      System.out.println(tsFromInstant.getTime());   
+	
 	}
 
 }
