@@ -48,8 +48,17 @@ class java_8_switch_statement {
 		switch (x) {
 		case 10:
 			System.out.println("Value is 10");
-		}			
-		 		
+		}		
+	}
+	
+	@Test
+	void simple_switch_4() {
+		System.out.println("Older swith example 4");
+		String day = "Sunday";		
+		switch (day) {
+			case "Sunday":
+				System.out.println("Value is 10");
+		}		
 	}
 
 }
